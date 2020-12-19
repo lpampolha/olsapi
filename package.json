@@ -4,8 +4,8 @@
   "description": "Sistema de Comércio Eletrônico",
   "main": "api.js",
   "scripts": {
-    "start": "node api.js",
-    "api": "nodemon api.js"
+    "start": "node api",
+    "api": "nodemon api"
   },
   "keywords": [],
   "author": "Lucas Pampolha",
