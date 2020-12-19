@@ -1,5 +1,4 @@
 const express = require('express')
-//const routeUsers = require('./src/routes/users')
 const bodyParser = require('body-parser')
 var cors = require('cors')
 const fileUpload = require('express-fileupload')
@@ -17,11 +16,11 @@ app.use(fileUpload())
 connectDB()
 
 //Define Rotas
-// app.use('/', routeUsers)
-// app.use('/register', require('./src/routes/register'))
-// app.use('/list', require('./src/routes/list'))
-// app.use('/edit', require('./src/routes/edit'))
-// app.use('/delete', require('./src/routes/delete'))
+app.get('/', (req,res) => res.send(`Sistema OLS`))
+app.use('/ads', require('./src/routes/ads'))
+app.use('/category', require('./src/routes/category'))
+app.use('/state', require('./src/routes/state'))
+app.use('/user', require('./src/routes/user'))
 // app.use('/auth', require('./src/routes/auth'))
 // app.use('/exercises', require('./src/routes/exercises'))
 
