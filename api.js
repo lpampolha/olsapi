@@ -21,7 +21,7 @@ app.use('/ads', require('./src/routes/ads'))
 app.use('/category', require('./src/routes/category'))
 app.use('/state', require('./src/routes/state'))
 app.use('/user', require('./src/routes/user'))
-// app.use('/auth', require('./src/routes/auth'))
+app.use('/auth', require('./src/routes/auth'))
 // app.use('/exercises', require('./src/routes/exercises'))
 
 app.listen(PORT, () => {console.log('Server Started!')})
