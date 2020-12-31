@@ -42,29 +42,24 @@ router.get('/:userId', async (req, res) => {
 // @access   Private
 router.post('/', [
     check('name', 'Estado inválido!').not().isEmpty(),
-], async (req, res, next) => {
+],async (req, res, next) => {
     try {
-        let { name } = req.body
+        let  { name } = req.body
+
         const errors = validationResult(req)
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() })
         } else {
-            let state = new State({ name })
-
-            state = await State.findOne({
-                state
-            })
-
+            let state = new State({ name})
             await state.save()
             if (state.id) {
-                res.json(state)
+                res.json(state);
             }
         }
     } catch (err) {
         console.error(err.message)
-        res.status(500).send({ "error": MSGS.GENERIC_ERROR })
+        res.status(500).send({ "error": MSGS.GENERIC_ERROR  })
     }
 })
-
 
 module.exports = router
