@@ -16,14 +16,14 @@ const UserSchema = new mongoose.Schema({
         required: true,
         select: false
     },
-    is_active: {
-        type: Boolean,
-        default: true
-    },
-    is_admin: {
-        type: Boolean,
-        default: false
-    },
+    // is_active: {
+    //     type: Boolean,
+    //     default: true
+    // },
+    // is_admin: {
+    //     type: Boolean,
+    //     default: false
+    // },
     date: {
         type: Date,
         default: Date.now
