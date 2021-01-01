@@ -3,15 +3,15 @@ const router = express.Router()
 const Auth = require('../middlewares/auth')
 const { check, validationResult } = require('express-validator')
 const MSGS = require('../../messages')
-const State = require('../models/state')
+const States = require('../models/states')
 
 // @route    GET /user
 // @desc     LIST user
 // @access   Private
 router.get('/', async (req, res) => {
     try {
-        const state = await State.find({})
-        res.json(state)
+        const states = await States.find({})
+        res.json(states)
     } catch (err) {
         console.error(err.message)
         res.status(500).send({ "error": MSGS.GENERIC_ERROR })
@@ -25,9 +25,9 @@ router.get('/', async (req, res) => {
 router.get('/:userId', async (req, res) => {
     try {
         const id = req.params.userId
-        const state = await State.findOne({ _id: id })
-        if (state) {
-            res.json(state)
+        const states = await States.findOne({ _id: id })
+        if (states) {
+            res.json(states)
         } else {
             res.status(404).send({ "error": MSGS.USER404 })
         }
@@ -50,10 +50,10 @@ router.post('/', [
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() })
         } else {
-            let state = new State({ name})
-            await state.save()
-            if (state.id) {
-                res.json(state);
+            let states = new State({ name})
+            await states.save()
+            if (states.id) {
+                res.json(states);
             }
         }
     } catch (err) {

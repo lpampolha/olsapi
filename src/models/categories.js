@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 mongoose.Promise = global.Promise
 
-const CategorySchema = new mongoose.Schema({
+const CategoriesSchema = new mongoose.Schema({
     name : {
         type : String,
         required : true
@@ -15,4 +15,4 @@ const CategorySchema = new mongoose.Schema({
     },
 }, {autoCreate: true})
 
-module.exports = mongoose.model('category', CategorySchema)
+module.exports = mongoose.model('categories', CategoriesSchema)

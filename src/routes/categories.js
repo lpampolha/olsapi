@@ -4,15 +4,15 @@ const { check, validationResult } = require('express-validator')
 const Auth = require('../middlewares/auth')
 const file = require('../middlewares/file')
 const MSGS = require('../../messages')
-const Category = require('../models/category')
+const Categories = require('../models/categories')
 
 // @route    GET /user
 // @desc     LIST user
 // @access   Private
 router.get('/', async (req, res) => {
     try {
-        const category = await Category.find({})
-        res.json(category)
+        const categories = await Categories.find({})
+        res.json(categories)
     } catch (err) {
         console.error(err.message)
         res.status(500).send({ "error": MSGS.GENERIC_ERROR })
@@ -26,9 +26,9 @@ router.get('/', async (req, res) => {
 router.get('/:userId', async (req, res) => {
     try {
         const id = req.params.userId
-        const category = await Category.findOne({ _id: id })
-        if (category) {
-            res.json(category)
+        const categories = await Categories.findOne({ _id: id })
+        if (categories) {
+            res.json(categories)
         } else {
             res.status(404).send({ "error": MSGS.USER404 })
         }
@@ -48,10 +48,10 @@ router.post('/', [
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() })
         } else {
-            let category = new Category({ name, icon, slug })
-            await category.save()
-            if (category.id) {
-                res.json(category);
+            let categories = new Categories({ name, icon, slug })
+            await categories.save()
+            if (categories.id) {
+                res.json(categories);
             }
         }
     } catch (err) {
