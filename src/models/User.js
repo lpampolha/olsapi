@@ -16,22 +16,26 @@ const UserSchema = new mongoose.Schema({
         required: true,
         select: false
     },
-    // is_active: {
-    //     type: Boolean,
-    //     default: true
-    // },
-    // is_admin: {
-    //     type: Boolean,
-    //     default: false
-    // },
     date: {
         type: Date,
         default: Date.now
     },
     state: {
-        type: String}
-    //passwordHash: String,
-    //token: String
-}, {autoCreate: true})
+        type: String},
+    passwordHash: {
+        type: String
+    },
+    token: {
+        type: String
+    },
+}
+)
+//, {autoCreate: true})
 
-module.exports = mongoose.model('user', UserSchema)
+const modelName = User
+
+if(mongoose.connectio && mongoose.connection.models[modelName]){
+    module.exports = mongoose.connection.models[modelName]
+    }else{
+        module.exports = mongoose.model(modelName, modelSchema)
+}

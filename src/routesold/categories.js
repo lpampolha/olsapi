@@ -60,26 +60,4 @@ router.post('/', [
     }
 })
 
-// router.post('/', file, async (req, res, next) => {
-//     try {
-//         const errors = validationResult(req)
-//         if (!errors.isEmpty()) {
-//             return res.status(400).json({ errors: errors.array() })
-//         } else {
-//             req.body = `category/${req.body}`
-//             let category = new Category(req.body)
-//             product.last_modified_by = req.user.id
-//             await category.save()
-//             if (category.id) {
-//                 const BUCKET_PUBLIC_PATH = process.env.BUCKET_PUBLIC_PATH || config.get('BUCKET_PUBLIC_PATH')
-//                 category.icon = `${BUCKET_PUBLIC_PATH}${category.icon}`
-//                 res.json(category)
-//             }
-//         }
-//     } catch (err) {
-//         console.error(err.message)
-//         res.status(500).send({ "error": MSGS.GENERIC_ERROR })
-//     }
-// })
-
 module.exports = router
