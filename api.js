@@ -18,6 +18,6 @@ app.use(express.static(__dirname+'./public'))
 connectDB()
 
 //Define Rotas
-app.use('/', apiRoutes)
+app.use('/', apiRoutes, (req,res) => res.send(`Sistema OLS`))
 
 app.listen(PORT, () => {console.log('Server Started!')})
