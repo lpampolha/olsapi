@@ -15,12 +15,25 @@ module.exports={
         const ads = await Ad.find({idUser: user._id.toString()})
         
         let adList = []
-        // for(let i in ads){
+        for(let i in ads){
 
-        //     const cat = await Category.findById(ads[i].category)
+            const cat = await Category.findById(ads[i].category)
 
-        //     adList.push({ ...ads[i], category:cat.slug})
-        // }
+            // adList.push({
+            //     id: ads[i]._id,
+            //     status: ads[i].status,
+            //     images: ads[i].images,
+            //     dateCreated: ads[i].dateCreated,
+            //     title: ads[i].title,
+            //     price: ads[i].price,
+            //     priceNegotiable: ads[i].priceNegotiable,
+            //     description: ads[i].description,
+            //     views: ads[i].views,
+            //     category: cat.slug
+            // })
+
+            adList.push({ ...ads[i], category:cat.slug})
+        }
         
         res.json({
             name: user.name,
