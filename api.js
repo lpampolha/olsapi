@@ -19,12 +19,5 @@ connectDB()
 
 //Define Rotas
 app.use('/', apiRoutes)
-//app.get('/', (req,res) => res.send(`Sistema OLS`))
-// app.use('/Ad', require('./src/routes/'))
-// app.use('/categories', require('./src/routes/categories'))
-//app.use('/states', require('./src/routes'))
-//app.use('/states', require('./src/routes/states'))
-// app.use('/user', require('./src/routes/user'))
-// app.use('/auth', require('./src/routes/auth'))
 
 app.listen(PORT, () => {console.log('Server Started!')})

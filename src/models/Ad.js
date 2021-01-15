@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 mongoose.Promise = global.Promise
 
-const AdSchema = new mongoose.Schema({
+const modelSchema = new mongoose.Schema({
     idUser: String,
     state: String,
     category: String,
@@ -17,7 +17,7 @@ const AdSchema = new mongoose.Schema({
 )
 //, {autoCreate: true})
 
-const modelName = Ad
+const modelName = 'Ad'
 
 if(mongoose.connectio && mongoose.connection.models[modelName]){
     module.exports = mongoose.connection.models[modelName]

@@ -1,20 +1,15 @@
 const mongoose = require('mongoose')
 mongoose.Promise = global.Promise
 
-const UserSchema = new mongoose.Schema({
+const modelSchema = new mongoose.Schema({
     name : {
         type : String,
-        required : true
     },
     email: {
         type: String,
-        required: true,
-        unique: true
     },
-    password :{
+    passwordHash :{
         type: String,
-        required: true,
-        select: false
     },
     date: {
         type: Date,
@@ -22,9 +17,6 @@ const UserSchema = new mongoose.Schema({
     },
     state: {
         type: String},
-    passwordHash: {
-        type: String
-    },
     token: {
         type: String
     },
@@ -32,7 +24,7 @@ const UserSchema = new mongoose.Schema({
 )
 //, {autoCreate: true})
 
-const modelName = User
+const modelName = 'User'
 
 if(mongoose.connectio && mongoose.connection.models[modelName]){
     module.exports = mongoose.connection.models[modelName]

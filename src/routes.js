@@ -1,31 +1,29 @@
 const express = require('express')
 const router = express.Router()
 
-//const AuthController = ('./controllers/AuthController')
-const UserController = ('./controllers/UserController.js')
-//const AdsController = ('./controllers/AdsController')
+const Auth = require('./middlewares/Auth')
 
-router.get('/ping', (req,res)=>{
-    res.json({pong:true})
-})
+const AuthValidator = require('./validators/AuthValidator') 
 
+const AuthController = require('./controllers/AuthController')
+const UserController = require('./controllers/UserController')
+const AdsController = require('./controllers/AdsController')
 
+router.get('/system', (req,res) => res.send(`Sistema OLS`))
 
-router.get('/', (req,res) => res.send(`Sistema OLS`))
+router.get('/states', Auth.private, UserController.getStates)
 
-//router.get('/states', UserController.getStates)
+router.post('/user/signin', AuthValidator.signin, AuthController.signin)
+router.post('/user/signup', AuthValidator.signup, AuthController.signup)
 
-// router.post('/user/signin', AuthController.signin)
-// router.post('/user/signup', AuthController.signup)
+router.get('/user/me', UserController.info)
+router.put('/user/me', UserController.editAction)
 
-// router.get('/user/me', UserController.info)
-// router.put('/user/me', UserController.editAction)
+router.get('/categories', AdsController.getCategories)
 
-// router.get('/categories', AdsController.getCategories)
-
-// router.post('/ad/add', AdsController.addAction)
-// router.get('/ad/list', AdsController.getList)
-// router.get('/ad/item', AdsController.getItem)
-// router.post('/ad/:id', AdsController.editAction)
+router.post('/ad/add', AdsController.addAction)
+router.get('/ad/list', AdsController.getList)
+router.get('/ad/item', AdsController.getItem)
+router.post('/ad/:id', AdsController.editAction)
 
 module.exports = router
