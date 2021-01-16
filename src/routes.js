@@ -10,8 +10,6 @@ const AuthController = require('./controllers/AuthController')
 const UserController = require('./controllers/UserController')
 const AdsController = require('./controllers/AdsController')
 
-//router.get('/system', (req,res) => res.send(`Sistema OLS`))
-
 router.get('/states', UserController.getStates)
 
 router.post('/user/signin', AuthValidator.signin, AuthController.signin)
