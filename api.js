@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const bodyParser = require('body-parser')
 var cors = require('cors')
@@ -18,6 +19,7 @@ app.use(express.static(__dirname+'./public'))
 connectDB()
 
 //Define Rotas
-app.use('/', apiRoutes, (req,res) => res.send(`Sistema OLS`))
+//app.use('/', apiRoutes, (req,res) => res.send(`Sistema OLS`))
+app.use('/', apiRoutes)
 
 app.listen(PORT, () => {console.log('Server Started!')})

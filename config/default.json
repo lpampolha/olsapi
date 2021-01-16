@@ -1,6 +1,7 @@
 {
     "mongoURI":"mongodb+srv://lpampolha:d6ysrXVWNbK9o8IM@cluster0.sprsf.gcp.mongodb.net/ols?retryWrites=true&w=majority",
     "jwtSecret": "(K_y7z/xm$flz~;:>]^v<o7-]6JB.nnuFK.Bnw}T:r6kL1]3^hi}.R_Eg5E;},<",
+    "baseURL":"http://localhost:3001",
     "AWS_ACCESS_KEY_ID":"AKIA3DBYI2GGVL5WHQR4",
     "AWS_SECRET_ACCESS_KEY":"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",
     "S3_BUCKET_NAME":"olsapi",
