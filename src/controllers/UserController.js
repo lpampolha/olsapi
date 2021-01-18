@@ -22,19 +22,6 @@ module.exports={
 
             const cat = await Category.findById(ads[i].category)
 
-            // adList.push({
-            //     id: ads[i]._id,
-            //     status: ads[i].status,
-            //     images: ads[i].images,
-            //     dateCreated: ads[i].dateCreated,
-            //     title: ads[i].title,
-            //     price: ads[i].price,
-            //     priceNegotiable: ads[i].priceNegotiable,
-            //     description: ads[i].description,
-            //     views: ads[i].views,
-            //     category: cat.slug
-            // })
-
             adList.push({ ...ads[i], category:cat.slug})
         }
         
