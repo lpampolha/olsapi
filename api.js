@@ -6,7 +6,7 @@ const fileUpload = require('express-fileupload')
 const app = express()
 const apiRoutes = require('./src/routes')
 const connectDB = require('./config/db')
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT
 
 //Middlewares
 app.use(cors())

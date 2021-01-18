@@ -4,4 +4,3 @@ config/*
 package-lock.json
 npm-debug.log
 .DS_Store
-/*.env
