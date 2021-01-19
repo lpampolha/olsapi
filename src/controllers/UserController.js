@@ -32,6 +32,7 @@ module.exports={
             ads: adList
         })
     },
+    
     editAction: async(req,res)=>{
         const errors = validationResult(req)
             if(!errors.isEmpty()){
