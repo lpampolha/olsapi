@@ -22,8 +22,8 @@ module.exports={
     addAction:async (req, res) =>{
         let token = req.body.token;
         const user = await User.findOne({token});
-        
-        const ads = await new Ad({
+
+        const ads = new Ad({
         idUser:user._id,
         state:user.state,
         category:req.body.cat,
@@ -32,10 +32,12 @@ module.exports={
         priceNegotiable:req.body.priceneg,
         description:req.body.desc,
         views:1,
-        status:"Ativo"
+        status:"Ativo",
+        images:req.file.filename
         });
         ads.save();
-        res.send('Ok');
+        console.log(ads)
+        res.json({ads})
     },
 
     getList: async (req, res) =>{
@@ -60,23 +62,20 @@ module.exports={
         },
 
     getItem: async(req,res)=>{
-        const ads = await Ad.find();
-        let adList = [];
-        
-        for(let i in ads){
-        const state = await User.find({id:ads.idUser});
-        
-        adList.push({
-        id:ads[i]._id,
-        title:ads[i].title,
-        price:ads[i].price,
-        priceNegotiable:ads[i].priceNegotiable,
-        image:`${process.env.BASE}/media/${ads[i].image}.jpg`,
-        state:state.name
-        })
+        try {
+            const ads = await Ad.findOne({_id: id})
+            const id = req.params.id
+            console.log(ads)
+        if(ads){
+            res.json(ads)
+        }else{
+            res.status(404).send({"error": "Item não encontrado" })
         }
-        
-        res.json({ads:adList})
+        } catch (error) {
+            console.error(error.message)
+            res.status(500).send({ "error": "Server Error" })    
+        }
+        res.json({ads})
     },
 
     editAction: async(req,res)=>{
