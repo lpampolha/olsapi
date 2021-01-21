@@ -33,7 +33,7 @@ module.exports={
         description:req.body.desc,
         views:1,
         status:"Ativo",
-        images:req.file.filename
+        images:req.file
         });
         ads.save();
         console.log(ads)
@@ -77,6 +77,30 @@ module.exports={
         }
         res.json({ads})
     },
+
+    // getItem:async (req, res) =>{
+    //     let id = req.query.id;
+    //     const adInfo = await Ad.findById(id);
+    //     const user = await User.findById(adInfo.idUser);
+    //     const state = await State.findById(user.state);
+    //     const cat = await Category.findById(adInfo.category);
+    //     const others = await Ad.findById(adInfo.idUser);
+        
+    //     await res.json({
+    //     id:adInfo.id,
+    //     title:adInfo.title,
+    //     price:adInfo.price,
+    //     priceNegotiable:adInfo.priceNegotiable,
+    //     description:adInfo.description,
+    //     dateCreated:adInfo.dateCreated,
+    //     views:adInfo.views,
+    //     category:cat,
+    //     userInfo:user,
+    //     stateName:state.name,
+    //     images:`${process.env.BASE}/media/${adInfo.images}`,
+    //     others:others
+    //     })
+    // },
 
     editAction: async(req,res)=>{
         const errors = validationResult(req)
