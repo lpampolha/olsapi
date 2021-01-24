@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 const Auth = require('./middlewares/Auth')
+const File = require('./middlewares')
 
 const AuthValidator = require('./validators/AuthValidator')
 const UserValidator = require('./validators/UserValidator') 
@@ -25,6 +26,6 @@ router.get('/categories', AdsController.getCategories)
 router.post('/ad/add', Auth.private, AdsController.addAction)
 router.get('/ad/list', AdsController.getList)
 router.get('/ad/item/:id', AdsController.getItem)
-router.post('/ad/:id', AdsController.editAction)
+router.post('/ad/:id', File.dest ,AdsController.editAction)
 
 module.exports = router
