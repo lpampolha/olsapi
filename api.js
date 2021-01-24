@@ -6,7 +6,7 @@ const fileUpload = require('express-fileupload')
 const app = express()
 const apiRoutes = require('./src/routes')
 const connectDB = require('./config/db')
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 3001
 
 //Middlewares
 app.use(cors())
@@ -19,6 +19,8 @@ app.use(express.static(__dirname+'./public'))
 connectDB()
 
 //Define Rotas
-app.use('/', apiRoutes, (req,res) => res.send(`Sistema OLS`))
+app.use('/', [], apiRoutes, (req,res,next) => {
+    res.send(`Sistema OLS`)
+})
 
 app.listen(PORT, () => {console.log('Server Started!')})

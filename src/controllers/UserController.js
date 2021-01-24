@@ -32,8 +32,13 @@ module.exports={
             ads: adList
         })
     },
+
+    getUsers: async(req,res)=>{
+        let users = await User.find()
+        res.json({users})
+    },
     
-    editAction: async(req,res)=>{
+    editUser: async(req,res)=>{
         const errors = validationResult(req)
             if(!errors.isEmpty()){
                 res.json({error: errors.mapped()})
