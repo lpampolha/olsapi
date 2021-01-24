@@ -68,7 +68,7 @@ module.exports={
     addAction:async (req, res) =>{
         let token = req.body.token;
         const user = await User.findOne({token});
-
+        
         const ads = new Ad({
         idUser:user._id,
         state:user.state,
@@ -79,11 +79,10 @@ module.exports={
         description:req.body.desc,
         views:1,
         status:"Ativo",
-        //images:req.file.filename
+        images:req.file.filename
         });
-        ads.save();
-        console.log(ads);
-        },
+        ads.save()
+    },
 
     editAction: async(req,res)=>{
         const errors = validationResult(req)
